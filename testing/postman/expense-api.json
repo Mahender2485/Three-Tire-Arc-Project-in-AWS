@@ -1,0 +1,41 @@
+Expense API
+│
+├── Health
+│   └── GET /api/health
+│
+├── Transactions
+│   ├── GET /api/transaction
+│   ├── GET /api/transaction/:id
+│   ├── POST /api/transaction
+│   ├── POST /api/transaction/bulk
+│   ├── PUT /api/transaction/:id
+│   ├── DELETE /api/transaction/:id
+│   └── DELETE /api/transaction
+│
+└── Demo
+    ├── GET /api/slow
+    ├── GET /api/error
+    └── GET /api/maintenance
+
+
+    postman request POST 'http://98.85.222.50/api/transaction/bulk' \
+  --header 'Content-Type: application/json' \
+  --body '{
+    "transactions": [
+        {
+            "description": "Movie and fun",
+            "amount": "1500",
+            "category": "Entertainment"
+        },
+        {
+            "description": "Flights and Hotels",
+            "amount": "2500",
+            "category": "Travel"
+        }
+    ]
+}        '
+
+
+GET
+====
+postman request 'http://98.85.222.50/api/transaction'

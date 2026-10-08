@@ -1,0 +1,21 @@
+{
+  "name": "expense-backend",
+  "version": "5.0.0",
+  "description": "Expense tracker backend - 3-tier AWS demo (v5: update expense + HTTP status code demos)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+  }
+}

@@ -1,0 +1,63 @@
+			INTERNET
+                            │
+                            │ HTTP :80
+                            ▼
+                 ┌──────────────────────┐
+                 │   PUBLIC IP          │
+                 │   <IP>               │
+                 │                      │
+                 │   Load Balancer EC2  │
+                 │                      │
+                 │       NGINX :80      │
+                 │          │           │
+                 │       HAProxy :8080  │
+                 └──────────┬───────────┘
+                            │
+                     Round Robin
+                      /          \
+                     /            \
+                    ▼              ▼
+          ┌────────────────┐  ┌────────────────┐
+          │  FRONTEND 1    │  │  FRONTEND 2    │
+          │                │  │                │
+          │ Nginx :80      │  │ Nginx :80      │
+          │ <IP>           │  │ <IP>           │
+          └───────┬────────┘  └───────┬────────┘
+                  │                   │
+                  └─────────┬─────────┘
+                            │
+                            │ HTTP :8080
+                            ▼
+                   ┌─────────────────┐
+                   │ BACKEND SERVER  │
+                   │                 │
+                   │ Node.js/Express │
+                   │ :8080           │
+                   │ <IP>            │
+                   └────────┬────────┘
+                            │
+                            │ MySQL
+                            ▼
+                   ┌─────────────────┐
+                   │   MYSQL DB      │
+                   │                 │
+                   │ transactions    │
+                   └─────────────────┘
+I'd also add the API flow:
+
+POST /api/transaction/bulk
+             │
+             ▼
+       Load Balancer
+             │
+       HAProxy round-robin
+          /        \
+         ▼          ▼
+    Frontend1    Frontend2
+         \          /
+          \        /
+           ▼      ▼
+        Backend :8080
+             │
+             ▼
+           MySQL
