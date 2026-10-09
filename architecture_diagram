@@ -10,7 +10,7 @@
                  │                      │
                  │       NGINX :80      │
                  │          │           │
-                 │       HAProxy :8080  │
+                 │       HAProxy :8000  │
                  └──────────┬───────────┘
                             │
                      Round Robin
